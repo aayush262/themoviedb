@@ -1,7 +1,21 @@
+import { useRef } from "react";
+
 import SearchButton from "../baseUI/Button/SearchButton";
 import SearchInput from "../baseUI/Input/SearchInput";
 
 const Banner = () => {
+  const searchInputRef = useRef();
+
+  const handleSearch = () => {
+    alert(`You typed ${searchInputRef.current.value}`);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="h-[300px] bg-cover bg-hero-pattern  py-5 ">
       <div className="py-10 px-10 flex flex-col gap-10">
@@ -13,9 +27,9 @@ const Banner = () => {
         </div>
 
         <div className="relative">
-          <SearchInput />
+          <SearchInput ref={searchInputRef} onKeyDown={handleKeyDown} />
           <div className="absolute top-0 right-0">
-            <SearchButton />
+            <SearchButton onClick={handleSearch} />
           </div>
         </div>
       </div>

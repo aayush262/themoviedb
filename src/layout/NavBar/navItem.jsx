@@ -28,7 +28,7 @@ const NavItem = ({ items }) => {
   return (
     <ul className="flex items-center gap-7">
       {items.map((item) => {
-        return <li>{getItem(item)}</li>;
+        return <li key={item.name}>{getItem(item)}</li>;
       })}
     </ul>
   );
