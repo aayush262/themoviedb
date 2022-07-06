@@ -1,5 +1,5 @@
 function Section({ children }) {
-  return <section className="pt-[30px] px-10 ">{children}</section>;
+  return <section className="pt-[30px]">{children}</section>;
 }
 
 export default Section;

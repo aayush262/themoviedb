@@ -6,9 +6,9 @@ const Switch = ({ items, onToggle }) => {
   const [item2Width, setItem2Width] = useState();
 
   useLayoutEffect(() => {
-    setItem1Width(document.getElementById("item1").offsetWidth);
-    setItem2Width(document.getElementById("item2").offsetWidth);
-  }, []);
+    setItem1Width(document.getElementById(items[0]).offsetWidth);
+    setItem2Width(document.getElementById(items[1]).offsetWidth);
+  }, [items]);
 
   const activeText =
     "text-transparent bg-clip-text bg-gradient-to-r from-[#c0fecf] to-[#1ed5a9]";
@@ -22,7 +22,7 @@ const Switch = ({ items, onToggle }) => {
   return (
     <div className="hover:cursor-pointer border-solid border-tmdbDarkBlue h-8 items-center rounded-[30px] border-[1px] flex font-semibold relative z-[1] ">
       <div
-        id="item1"
+        id={items[0]}
         onClick={handleSwitch}
         className={`py-1 px-5 h-8 rounded-[30px] transition ease-in-out   ${
           isToggled || activeText
@@ -31,7 +31,7 @@ const Switch = ({ items, onToggle }) => {
         {items[0]}
       </div>
       <div
-        id="item2"
+        id={items[1]}
         onClick={handleSwitch}
         className={`py-1 px-5 h-8 rounded-[30px] ${isToggled && activeText}`}
       >

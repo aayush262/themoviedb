@@ -4,6 +4,8 @@ import NavBar from "./layout/NavBar";
 import Switch from "./baseUI/Switch";
 import Section from "./layout/Section";
 import SectionTitle from "./layout/Section/SectionTitle";
+import Card from "./baseUI/Card";
+import MovieList from "./components/Movie/MovieList";
 
 function App() {
   const handleToggleValue = (selected) => {
@@ -18,15 +20,17 @@ function App() {
       <Container>
         <Banner />
         <Section>
-          <div className="flex gap-5 items-center">
+          <div className="flex gap-5 items-center px-10">
             <SectionTitle title={`What's popular`} />
             <Switch
-              items={["HI there long text", "Hi tehre another long text"]}
+              items={["On TV", "In Theaters"]}
               onToggle={handleToggleValue}
             />
           </div>
 
-          <div>Movie List</div>
+          <div className="pt-5">
+            <MovieList />
+          </div>
         </Section>
       </Container>
     </>
