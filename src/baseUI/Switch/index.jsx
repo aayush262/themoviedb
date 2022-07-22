@@ -1,7 +1,6 @@
 import { useState, useLayoutEffect } from "react";
 
-const Switch = ({ items, onToggle }) => {
-  const [isToggled, setToggle] = useState(false);
+const Switch = ({ items, onToggle, isToggled }) => {
   const [item1Width, setItem1Width] = useState();
   const [item2Width, setItem2Width] = useState();
 
@@ -13,17 +12,15 @@ const Switch = ({ items, onToggle }) => {
   const activeText =
     "text-transparent bg-clip-text bg-gradient-to-r from-[#c0fecf] to-[#1ed5a9]";
 
-  const handleSwitch = () => {
-    setToggle((prevToggle) => !prevToggle);
+  const handleSwitch = (item) => {
+    onToggle(item);
   };
-
-  onToggle(isToggled ? items[1] : items[0]);
 
   return (
     <div className="hover:cursor-pointer border-solid border-tmdbDarkBlue h-8 items-center rounded-[30px] border-[1px] flex font-semibold relative z-[1] ">
       <div
         id={items[0]}
-        onClick={handleSwitch}
+        onClick={handleSwitch.bind(null, items[0])}
         className={`py-1 px-5 h-8 rounded-[30px] transition ease-in-out   ${
           isToggled || activeText
         }`}
@@ -32,7 +29,7 @@ const Switch = ({ items, onToggle }) => {
       </div>
       <div
         id={items[1]}
-        onClick={handleSwitch}
+        onClick={handleSwitch.bind(null, items[1])}
         className={`py-1 px-5 h-8 rounded-[30px] ${isToggled && activeText}`}
       >
         {items[1]}

@@ -4,12 +4,14 @@ import NavBar from "./layout/NavBar";
 import Switch from "./baseUI/Switch";
 import Section from "./layout/Section";
 import SectionTitle from "./layout/Section/SectionTitle";
-import Card from "./baseUI/Card";
 import MovieList from "./components/Movie/MovieList";
+import { useState } from "react";
 
 function App() {
+  const [selectedItem, setItem] = useState("On TV");
+
   const handleToggleValue = (selected) => {
-    console.log(selected);
+    setItem(selected);
   };
 
   return (
@@ -20,16 +22,18 @@ function App() {
       <Container>
         <Banner />
         <Section>
-          <div className="flex gap-5 items-center px-10">
-            <SectionTitle title={`What's popular`} />
-            <Switch
-              items={["On TV", "In Theaters"]}
-              onToggle={handleToggleValue}
-            />
-          </div>
-
-          <div className="pt-5">
-            <MovieList />
+          <div className="relative">
+            <div className="flex gap-5 items-center px-10">
+              <SectionTitle title={`What's popular`} />
+              <Switch
+                items={["On TV", "In Theaters"]}
+                onToggle={handleToggleValue}
+                isToggled={selectedItem === "On TV" ? false : true}
+              />
+            </div>
+            <div className="pt-5">
+              <MovieList item={selectedItem} />
+            </div>
           </div>
         </Section>
       </Container>
