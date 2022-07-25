@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import tmdb from "../../api/tmdb";
 import Blur from "../../baseUI/Blur";
-import MovieCard from "./MoveCard";
+import MovieCard from "./MovieCard";
 import { request } from "../../util/request";
 
 function MovieList({ item }) {
